@@ -104,6 +104,10 @@
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
+        .cv-container {
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
     </style>
 </head>
 <body>
@@ -256,7 +260,11 @@ window.addEventListener('load', function() {
     const btn = this;
     btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Generando PDF...';
     btn.disabled = true;
-    
+    const canvas = await html2canvas(element, {
+  scale: 3, // Aumentar calidad
+  dpi: 300, // Resolución para impresión
+  letterRendering: true
+});
     try {
       const { jsPDF } = window.jspdf;
       const pdf = new jsPDF('p', 'mm', 'a4');
