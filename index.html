@@ -241,50 +241,65 @@
             </div>
         </div>
     </div>
-    <!-- Botón de descarga - Colócalo donde quieras que aparezca -->
+   <!-- Botón de descarga mejorado -->
 <div class="text-center my-4">
   <button id="downloadPdf" class="btn btn-primary">
-    <i class="fas fa-file-pdf me-2"></i>Descargar CV en PDF
+    <i class="fas fa-file-pdf me-2"></i>Descargar CV Completo en PDF
   </button>
 </div>
 
-<!-- Scripts mejorados para PDF -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
-// Espera a que todo cargue
 window.addEventListener('load', function() {
-  document.getElementById('downloadPdf').addEventListener('click', function() {
-    // Mostrar mensaje mientras genera
-    this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Generando PDF...';
+  document.getElementById('downloadPdf').addEventListener('click', async function() {
+    const btn = this;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Generando PDF...';
+    btn.disabled = true;
     
-    // Configuración mejorada
-    const { jsPDF } = window.jspdf;
-    const element = document.querySelector('.cv-container');
-    const options = {
-      scale: 2, // Mejor calidad
-      useCORS: true, // Para imágenes externas
-      allowTaint: true,
-      logging: true
-    };
-    
-    html2canvas(element, options).then(canvas => {
-      const imgData = canvas.toDataURL('image/png', 1.0);
+    try {
+      const { jsPDF } = window.jspdf;
       const pdf = new jsPDF('p', 'mm', 'a4');
-      const imgProps = pdf.getImageProperties(imgData);
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      const element = document.querySelector('.cv-container');
+      const padding = 10;
       
-      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-      pdf.save('CV_Cesar_Lesmo.pdf');
+      // 1. Calcular altura total del contenido
+      const totalHeight = element.scrollHeight;
+      const pageHeight = pdf.internal.pageSize.getHeight() - 2*padding;
+      let position = 0;
+      let pageNum = 1;
       
-      // Restaurar botón
-      document.getElementById('downloadPdf').innerHTML = '<i class="fas fa-file-pdf me-2"></i>Descargar CV en PDF';
-    }).catch(error => {
-      console.error('Error al generar PDF:', error);
-      alert('Error al generar el PDF. Por favor intenta nuevamente.');
-      document.getElementById('downloadPdf').innerHTML = '<i class="fas fa-file-pdf me-2"></i>Descargar CV en PDF';
-    });
+      // 2. Dividir en páginas
+      while (position < totalHeight) {
+        if (pageNum > 1) pdf.addPage();
+        
+        const canvas = await html2canvas(element, {
+          scale: 2,
+          useCORS: true,
+          windowHeight: element.scrollHeight,
+          scrollY: -window.scrollY,
+          y: position,
+          height: pageHeight,
+          logging: true
+        });
+        
+        const imgData = canvas.toDataURL('image/png', 1.0);
+        const imgWidth = pdf.internal.pageSize.getWidth() - 2*padding;
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        
+        pdf.addImage(imgData, 'PNG', padding, padding, imgWidth, imgHeight);
+        position += pageHeight;
+        pageNum++;
+      }
+      
+      pdf.save('CV_Completo_Cesar_Lesmo.pdf');
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error al generar PDF. Por favor intenta nuevamente.');
+    } finally {
+      btn.innerHTML = '<i class="fas fa-file-pdf me-2"></i>Descargar CV Completo en PDF';
+      btn.disabled = false;
+    }
   });
 });
 </script>
