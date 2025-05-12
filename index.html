@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Profesional | César Lesmo</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome (íconos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --serie-mania-primary: #6a11cb;  /* Morado Serie Manía */
+            --serie-mania-secondary: #2575fc; /* Azul Serie Manía */
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .cv-container {
+            background: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--serie-mania-primary) 0%, var(--serie-mania-secondary) 100%);
+            color: white;
+            padding: 2.5rem;
+            text-align: center;
+        }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid white;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        .section-title {
+            color: var(--serie-mania-primary);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .contact-info i {
+            color: var(--serie-mania-secondary);
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        .job-title {
+            color: var(--serie-mania-primary);
+            font-weight: 600;
+        }
+        .date {
+            color: #6c757d;
+            font-style: italic;
+        }
+        .skill-badge {
+            background: linear-gradient(90deg, var(--serie-mania-primary), var(--serie-mania-secondary));
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+        .social-icon {
+            font-size: 1.5rem;
+            margin-right: 10px;
+            color: var(--serie-mania-secondary);
+            transition: all 0.3s;
+        }
+        .social-icon:hover {
+            color: var(--serie-mania-primary);
+            transform: scale(1.2);
+        }
+        .language-level {
+            font-weight: 600;
+            color: var(--serie-mania-primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 cv-container">
+                <!-- Encabezado -->
+                <div class="header">
+                    <img src="https://via.placeholder.com/150" alt="Foto de César Lesmo" class="profile-img">
+                    <h1>César Antonio Lesmo Santander</h1>
+                    <p class="fs-5">Licenciado en Informática | Emprendedor Digital</p>
+                    <p class="mb-0">Propietario de <strong>Serie Manía</strong></p>
+                </div>
+
+                <!-- Cuerpo del CV -->
+                <div class="p-4 p-md-5">
+                    <!-- Contacto -->
+                    <div class="mb-5">
+                        <h2 class="section-title"><i class="fas fa-id-card me-2"></i>Datos Personales</h2>
+                        <div class="row contact-info">
+                            <div class="col-md-6 mb-3">
+                                <p><i class="fas fa-birthday-cake"></i> <strong>Fecha de Nacimiento:</strong> 14 de septiembre de 1987</p>
+                                <p><i class="fas fa-map-marker-alt"></i> <strong>Ubicación:</strong> Barrio San José, Ciudad del Este</p>
+                                <p><i class="fas fa-phone"></i> <strong>Teléfonos:</strong> 0982-291-436 / 0982-356-775</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <p><i class="fas fa-id-card"></i> <strong>Documento:</strong> 4.703.183</p>
+                                <p><i class="fas fa-globe"></i> <strong>Web:</strong> <a href="https://seriemanials.com/" target="_blank" style="color: var(--serie-mania-secondary);">seriemanials.com</a></p>
+                                <p><i class="fab fa-facebook"></i> <strong>Facebook:</strong> <a href="https://www.facebook.com/czarsantander.lesmo" target="_blank" style="color: var(--serie-mania-secondary);">czarsantander.lesmo</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Experiencia Laboral -->
+                    <div class="mb-5">
+                        <h2 class="section-title"><i class="fas fa-briefcase me-2"></i>Experiencia Laboral</h2>
+                        
+                        <div class="mb-4">
+                            <h4 class="job-title">Propietario - Serie Manía</h4>
+                            <p class="date">Diciembre 2019 - Presente</p>
+                            <p><strong>Servicios ofrecidos:</strong></p>
+                            <ul>
+                                <li>Atención y asesoramiento online de clientes.</li>
+                                <li>Servicios de cobranzas vía llamadas o mensajes.</li>
+                                <li>Diseño de imágenes para redes sociales y negocios.</li>
+                                <li>Creación de catálogos online interactivos.</li>
+                                <li>Administración de Redes Sociales.</li>
+                                <li>Ventas Online y de cuentas de Streaming.</li>
+                            </ul>
+                            <p><strong>Web:</strong> <a href="https://seriemanials.com/" target="_blank">seriemanials.com</a></p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4 class="job-title">Vendedor de Salón - Ramirez Ramirez</h4>
+                            <p class="date">Febrero 2014 - Agosto 2019 (5 años 6 meses)</p>
+                            <p>Casa Central Ciudad del Este: Av. Capitán del Puerto, esq. Capitán Fariña, Área 4</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4 class="job-title">Gerente Sucursal - Comercial Maridel S.A.</h4>
+                            <p class="date">2010 - Febrero 2014 (3 años)</p>
+                            <p>Sucursal Km. 7 Cuidad Nueva</p>
+                            <p><strong>Actividades:</strong></p>
+                            <ul>
+                                <li>Facturación, compras y control de stock.</li>
+                                <li>Gestión de caja y asistencias técnicas.</li>
+                                <li>Análisis de créditos y morosidad.</li>
+                                <li>Informes mensuales y depósitos bancarios.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Otras experiencias -->
+                        <div class="mb-4">
+                            <h4 class="job-title">Cajero - Comercial Maridel S.A.</h4>
+                            <p class="date">2009 - 2010 (1 año)</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4 class="job-title">Vendedor Externo - TiGo</h4>
+                            <p class="date">2007 - 2008 (1 año)</p>
+                        </div>
+                    </div>
+
+                    <!-- Educación -->
+                    <div class="mb-5">
+                        <h2 class="section-title"><i class="fas fa-graduation-cap me-2"></i>Educación</h2>
+                        <div class="mb-3">
+                            <h4>Licenciatura en Informática</h4>
+                            <p class="date">Universidad Privada del Este (UPE)</p>
+                        </div>
+                        <div class="mb-3">
+                            <h4>Bachiller Técnico en Informática</h4>
+                            <p class="date">Colegio Nacional Atanasio Riera</p>
+                        </div>
+                    </div>
+
+                    <!-- Habilidades -->
+                    <div class="mb-5">
+                        <h2 class="section-title"><i class="fas fa-code me-2"></i>Habilidades</h2>
+                        <div>
+                            <span class="skill-badge">Gestión de Negocios Online</span>
+                            <span class="skill-badge">Ventas Digitales</span>
+                            <span class="skill-badge">Administración de Redes Sociales</span>
+                            <span class="skill-badge">Diseño Gráfico Básico</span>
+                            <span class="skill-badge">Análisis Financiero</span>
+                            <span class="skill-badge">Atención al Cliente</span>
+                        </div>
+                    </div>
+
+                    <!-- Idiomas -->
+                    <div class="mb-5">
+                        <h2 class="section-title"><i class="fas fa-language me-2"></i>Idiomas</h2>
+                        <p><span class="language-level">Español:</span> Nativo (habla, escribe y lee)</p>
+                        <p><span class="language-level">Guaraní:</span> Habla y lee</p>
+                        <p><span class="language-level">Portugués:</span> Habla y lee</p>
+                    </div>
+
+                    <!-- Referencias -->
+                    <div class="mb-4">
+                        <h2 class="section-title"><i class="fas fa-users me-2"></i>Referencias</h2>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <p><strong>Horacio Villagra</strong><br>
+                                (Maridel Km. 7)<br>
+                                061-571-671</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <p><strong>Reinaldo Rivas</strong><br>
+                                (Gerente General de Ramírez Ramírez)<br>
+                                0986-364-400</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (opcional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
