@@ -28,6 +28,7 @@
             overflow: hidden;
             margin-top: 30px;
             margin-bottom: 30px;
+            width: 100%;
         }
         .header {
             background: linear-gradient(135deg, var(--serie-mania-primary) 0%, var(--serie-mania-secondary) 100%);
@@ -89,25 +90,42 @@
             color: var(--serie-mania-primary);
         }
         #downloadPdf {
-  background: linear-gradient(135deg, var(--serie-mania-primary) 0%, var(--serie-mania-secondary) 100%);
-  border: none;
-  padding: 10px 20px;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s;
-  display: block;
-  margin: 20px auto;
-}
-
-#downloadPdf:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
+            background: linear-gradient(135deg, var(--serie-mania-primary) 0%, var(--serie-mania-secondary) 100%);
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            margin: 20px auto;
+        }
+        #downloadPdf:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
         .cv-container {
-  -webkit-print-color-adjust: exact !important;
-  print-color-adjust: exact !important;
-}
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        
+        /* Estilos específicos para PDF */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            .cv-container, .cv-container * {
+                visibility: visible;
+            }
+            .cv-container {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                margin: 0;
+                box-shadow: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -245,73 +263,84 @@
             </div>
         </div>
     </div>
-   <!-- Botón de descarga mejorado -->
-<div class="text-center my-4">
-  <button id="downloadPdf" class="btn btn-primary">
-    <i class="fas fa-file-pdf me-2"></i>Descargar CV Completo en PDF
-  </button>
-</div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script>
-window.addEventListener('load', function() {
-  document.getElementById('downloadPdf').addEventListener('click', async function() {
-    const btn = this;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Generando PDF...';
-    btn.disabled = true;
-    const canvas = await html2canvas(element, {
-  scale: 3, // Aumentar calidad
-  dpi: 300, // Resolución para impresión
-  letterRendering: true
-});
-    try {
-      const { jsPDF } = window.jspdf;
-      const pdf = new jsPDF('p', 'mm', 'a4');
-      const element = document.querySelector('.cv-container');
-      const padding = 10;
-      
-      // 1. Calcular altura total del contenido
-      const totalHeight = element.scrollHeight;
-      const pageHeight = pdf.internal.pageSize.getHeight() - 2*padding;
-      let position = 0;
-      let pageNum = 1;
-      
-      // 2. Dividir en páginas
-      while (position < totalHeight) {
-        if (pageNum > 1) pdf.addPage();
+    <!-- Botón de descarga mejorado -->
+    <div class="text-center my-4">
+        <button id="downloadPdf" class="btn btn-primary">
+            <i class="fas fa-file-pdf me-2"></i>Descargar CV Completo en PDF
+        </button>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Scripts para generación de PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <script>
+    // Esperar a que todo cargue
+    document.addEventListener('DOMContentLoaded', function() {
+        const btn = document.getElementById('downloadPdf');
         
-        const canvas = await html2canvas(element, {
-          scale: 2,
-          useCORS: true,
-          windowHeight: element.scrollHeight,
-          scrollY: -window.scrollY,
-          y: position,
-          height: pageHeight,
-          logging: true
+        btn.addEventListener('click', async function() {
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Generando PDF...';
+            btn.disabled = true;
+            
+            try {
+                const { jsPDF } = window.jspdf;
+                const element = document.querySelector('.cv-container');
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const padding = 10;
+                const pageHeight = pdf.internal.pageSize.getHeight() - (2 * padding);
+                
+                // Primero calculamos la altura total del contenido
+                const totalHeight = element.scrollHeight;
+                let position = 0;
+                let pageNum = 1;
+                
+                // Función para capturar una sección del CV
+                const captureSection = async (yPosition) => {
+                    return await html2canvas(element, {
+                        scale: 2, // Mejor calidad
+                        useCORS: true, // Para imágenes externas
+                        windowHeight: element.scrollHeight,
+                        scrollY: -window.scrollY,
+                        y: yPosition,
+                        height: pageHeight,
+                        logging: true,
+                        backgroundColor: '#FFFFFF'
+                    });
+                };
+                
+                // Capturamos el CV por secciones (páginas)
+                while (position < totalHeight) {
+                    if (pageNum > 1) {
+                        pdf.addPage();
+                    }
+                    
+                    const canvas = await captureSection(position);
+                    const imgData = canvas.toDataURL('image/png', 1.0);
+                    const imgWidth = pdf.internal.pageSize.getWidth() - (2 * padding);
+                    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                    
+                    pdf.addImage(imgData, 'PNG', padding, padding, imgWidth, imgHeight);
+                    position += pageHeight;
+                    pageNum++;
+                }
+                
+                // Guardar el PDF
+                pdf.save('CV_Cesar_Lesmo.pdf');
+                
+            } catch (error) {
+                console.error('Error al generar PDF:', error);
+                alert('Hubo un error al generar el PDF. Por favor inténtalo nuevamente.');
+            } finally {
+                btn.innerHTML = '<i class="fas fa-file-pdf me-2"></i>Descargar CV Completo en PDF';
+                btn.disabled = false;
+            }
         });
-        
-        const imgData = canvas.toDataURL('image/png', 1.0);
-        const imgWidth = pdf.internal.pageSize.getWidth() - 2*padding;
-        const imgHeight = (canvas.height * imgWidth) / canvas.width;
-        
-        pdf.addImage(imgData, 'PNG', padding, padding, imgWidth, imgHeight);
-        position += pageHeight;
-        pageNum++;
-      }
-      
-      pdf.save('CV_Completo_Cesar_Lesmo.pdf');
-    } catch (error) {
-      console.error('Error:', error);
-      alert('Error al generar PDF. Por favor intenta nuevamente.');
-    } finally {
-      btn.innerHTML = '<i class="fas fa-file-pdf me-2"></i>Descargar CV Completo en PDF';
-      btn.disabled = false;
-    }
-  });
-});
-</script>
-
-
+    });
+    </script>
 </body>
 </html>
