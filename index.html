@@ -1,346 +1,179 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV Profesional | César Lesmo</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome (íconos) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --serie-mania-primary: #6a11cb;  /* Morado Serie Manía */
-            --serie-mania-secondary: #2575fc; /* Azul Serie Manía */
-        }
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
-        }
-        .cv-container {
-            background: white;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            margin-top: 30px;
-            margin-bottom: 30px;
-            width: 100%;
-        }
-        .header {
-            background: linear-gradient(135deg, var(--serie-mania-primary) 0%, var(--serie-mania-secondary) 100%);
-            color: white;
-            padding: 2.5rem;
-            text-align: center;
-        }
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 4px solid white;
-            object-fit: cover;
-            margin-bottom: 20px;
-        }
-        .section-title {
-            color: var(--serie-mania-primary);
-            border-bottom: 2px solid #eee;
-            padding-bottom: 8px;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-        .contact-info i {
-            color: var(--serie-mania-secondary);
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-        }
-        .job-title {
-            color: var(--serie-mania-primary);
-            font-weight: 600;
-        }
-        .date {
-            color: #6c757d;
-            font-style: italic;
-        }
-        .skill-badge {
-            background: linear-gradient(90deg, var(--serie-mania-primary), var(--serie-mania-secondary));
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-right: 5px;
-            margin-bottom: 5px;
-            display: inline-block;
-        }
-        .social-icon {
-            font-size: 1.5rem;
-            margin-right: 10px;
-            color: var(--serie-mania-secondary);
-            transition: all 0.3s;
-        }
-        .social-icon:hover {
-            color: var(--serie-mania-primary);
-            transform: scale(1.2);
-        }
-        .language-level {
-            font-weight: 600;
-            color: var(--serie-mania-primary);
-        }
-        #downloadPdf {
-            background: linear-gradient(135deg, var(--serie-mania-primary) 0%, var(--serie-mania-secondary) 100%);
-            border: none;
-            padding: 10px 20px;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: block;
-            margin: 20px auto;
-        }
-        #downloadPdf:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .cv-container {
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
-        }
-        
-        /* Estilos específicos para PDF */
-        @media print {
-            body * {
-                visibility: hidden;
-            }
-            .cv-container, .cv-container * {
-                visibility: visible;
-            }
-            .cv-container {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                margin: 0;
-                box-shadow: none;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Profesional | César Lesmo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --serie-mania-primary: #6a11cb;
+      --serie-mania-secondary: #2575fc;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    .cv-container {
+      background: white;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      width: 100%;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--serie-mania-primary), var(--serie-mania-secondary));
+      color: white;
+      padding: 2.5rem;
+      text-align: center;
+    }
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid white;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+    .section-title {
+      color: var(--serie-mania-primary);
+      border-bottom: 2px solid #eee;
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    .contact-info i {
+      color: var(--serie-mania-secondary);
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+    .job-title {
+      color: var(--serie-mania-primary);
+      font-weight: 600;
+    }
+    .date {
+      color: #6c757d;
+      font-style: italic;
+    }
+    .skill-badge {
+      background: linear-gradient(90deg, var(--serie-mania-primary), var(--serie-mania-secondary));
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      display: inline-block;
+    }
+    .language-level {
+      font-weight: 600;
+      color: var(--serie-mania-primary);
+    }
+    #downloadPdf {
+      background: linear-gradient(135deg, var(--serie-mania-primary), var(--serie-mania-secondary));
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: block;
+      margin: 20px auto;
+    }
+    #downloadPdf:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    @media print {
+      body * { visibility: hidden; }
+      .cv-container, .cv-container * {
+        visibility: visible;
+      }
+      .cv-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-10 cv-container">
-                <!-- Encabezado -->
-                <div class="header">
-                    <img src="cesarlesmo.jpeg" alt="Foto de César Lesmo" class="profile-img">
-                    <h1>César Antonio Lesmo Santander</h1>
-                    <p class="fs-5">Licenciado en Informática | Emprendedor Digital</p>
-                    <p class="mb-0">Propietario de <strong>Serie Manía</strong></p>
-                </div>
-
-                <!-- Cuerpo del CV -->
-                <div class="p-4 p-md-5">
-                    <!-- Contacto -->
-                    <div class="mb-5">
-                        <h2 class="section-title"><i class="fas fa-id-card me-2"></i>Datos Personales</h2>
-                        <div class="row contact-info">
-                            <div class="col-md-6 mb-3">
-                                <p><i class="fas fa-birthday-cake"></i> <strong>Fecha de Nacimiento:</strong> 14 de septiembre de 1987</p>
-                                <p><i class="fas fa-map-marker-alt"></i> <strong>Ubicación:</strong> Barrio San José, Ciudad del Este</p>
-                                <p><i class="fas fa-phone"></i> <strong>Teléfonos:</strong> 0973-101-971 / 0982-356-775</p>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <p><i class="fas fa-id-card"></i> <strong>Documento:</strong> 4.703.183</p>
-                                <p><i class="fas fa-globe"></i> <strong>Web:</strong> <a href="https://seriemanials.com/" target="_blank" style="color: var(--serie-mania-secondary);">seriemanials.com</a></p>
-                                <p><i class="fab fa-facebook"></i> <strong>Facebook:</strong> <a href="https://www.facebook.com/czarsantander.lesmo" target="_blank" style="color: var(--serie-mania-secondary);">czarsantander.lesmo</a></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Experiencia Laboral -->
-                    <div class="mb-5">
-                        <h2 class="section-title"><i class="fas fa-briefcase me-2"></i>Experiencia Laboral</h2>
-                        
-                        <div class="mb-4">
-                            <h4 class="job-title">Propietario - Serie Manía</h4>
-                            <p class="date">Diciembre 2019 - Presente</p>
-                            <p><strong>Servicios ofrecidos:</strong></p>
-                            <ul>
-                                <li>Atención y asesoramiento online de clientes.</li>
-                                <li>Servicios de cobranzas vía llamadas o mensajes.</li>
-                                <li>Diseño de imágenes para redes sociales y negocios.</li>
-                                <li>Creación de catálogos online interactivos.</li>
-                                <li>Administración de Redes Sociales.</li>
-                                <li>Ventas Online y de cuentas de Streaming.</li>
-                            </ul>
-                            <p><strong>Web:</strong> <a href="https://seriemanials.com/" target="_blank">seriemanials.com</a></p>
-                        </div>
-
-                        <div class="mb-4">
-                            <h4 class="job-title">Vendedor de Salón - Ramirez Ramirez</h4>
-                            <p class="date">Febrero 2014 - Agosto 2019 (5 años 6 meses)</p>
-                            <p>Casa Central Ciudad del Este: Av. Capitán del Puerto, esq. Capitán Fariña, Área 4</p>
-                        </div>
-
-                        <div class="mb-4">
-                            <h4 class="job-title">Gerente Sucursal - Comercial Maridel S.A.</h4>
-                            <p class="date">2010 - Febrero 2014 (3 años)</p>
-                            <p>Sucursal Km. 7 Cuidad Nueva</p>
-                            <p><strong>Actividades:</strong></p>
-                            <ul>
-                                <li>Facturación, compras y control de stock.</li>
-                                <li>Gestión de caja y asistencias técnicas.</li>
-                                <li>Análisis de créditos y morosidad.</li>
-                                <li>Informes mensuales y depósitos bancarios.</li>
-                            </ul>
-                        </div>
-
-                        <!-- Otras experiencias -->
-                        <div class="mb-4">
-                            <h4 class="job-title">Cajero - Comercial Maridel S.A.</h4>
-                            <p class="date">2009 - 2010 (1 año)</p>
-                        </div>
-
-                        <div class="mb-4">
-                            <h4 class="job-title">Vendedor Externo - TiGo</h4>
-                            <p class="date">2007 - 2008 (1 año)</p>
-                        </div>
-                    </div>
-
-                    <!-- Educación -->
-                    <div class="mb-5">
-                        <h2 class="section-title"><i class="fas fa-graduation-cap me-2"></i>Educación</h2>
-                        <div class="mb-3">
-                            <h4>Licenciatura en Informática</h4>
-                            <p class="date">Universidad Privada del Este (UPE)</p>
-                        </div>
-                        <div class="mb-3">
-                            <h4>Bachiller Técnico en Informática</h4>
-                            <p class="date">Colegio Nacional Atanasio Riera</p>
-                        </div>
-                    </div>
-
-                    <!-- Habilidades -->
-                    <div class="mb-5">
-                        <h2 class="section-title"><i class="fas fa-code me-2"></i>Habilidades</h2>
-                        <div>
-                            <span class="skill-badge">Gestión de Negocios Online</span>
-                            <span class="skill-badge">Ventas Digitales</span>
-                            <span class="skill-badge">Administración de Redes Sociales</span>
-                            <span class="skill-badge">Diseño Gráfico Básico</span>
-                            <span class="skill-badge">Análisis Financiero</span>
-                            <span class="skill-badge">Atención al Cliente</span>
-                        </div>
-                    </div>
-
-                    <!-- Idiomas -->
-                    <div class="mb-5">
-                        <h2 class="section-title"><i class="fas fa-language me-2"></i>Idiomas</h2>
-                        <p><span class="language-level">Español:</span> Nativo (habla, escribe y lee)</p>
-                        <p><span class="language-level">Guaraní:</span> Habla y lee</p>
-                        <p><span class="language-level">Portugués:</span> Habla y lee</p>
-                    </div>
-
-                    <!-- Referencias -->
-                    <div class="mb-4">
-                        <h2 class="section-title"><i class="fas fa-users me-2"></i>Referencias</h2>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <p><strong>Horacio Villagra</strong><br>
-                                (Maridel Km. 7)<br>
-                                061-571-671</p>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <p><strong>Reinaldo Rivas</strong><br>
-                                (Gerente General de Ramírez Ramírez)<br>
-                                0986-364-400</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 cv-container" id="cv">
+        <!-- CONTENIDO DEL CV (igual al original, omitido por espacio) -->
+        <!-- Puedes pegar aquí todo tu contenido HTML de experiencia, datos, habilidades, etc. -->
+        <!-- ... -->
+      </div>
     </div>
+  </div>
 
-    <!-- Botón de descarga mejorado -->
-    <div class="text-center my-4">
-        <button id="downloadPdf" class="btn btn-primary">
-            <i class="fas fa-file-pdf me-2"></i>Descargar CV Completo en PDF
-        </button>
-    </div>
+  <!-- Botón descarga -->
+  <div class="text-center my-4">
+    <button id="downloadPdf">
+      <i class="fas fa-file-pdf me-2"></i>Descargar CV Completo en PDF
+    </button>
+  </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Scripts para generación de PDF -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    
-    <script>
-    // Esperar a que todo cargue
-    document.addEventListener('DOMContentLoaded', function() {
-        const btn = document.getElementById('downloadPdf');
-        
-        btn.addEventListener('click', async function() {
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Generando PDF...';
-            btn.disabled = true;
-            
-            try {
-                const { jsPDF } = window.jspdf;
-                const element = document.querySelector('.cv-container');
-                const pdf = new jsPDF('p', 'mm', 'a4');
-                const padding = 10;
-                const pageHeight = pdf.internal.pageSize.getHeight() - (2 * padding);
-                
-                // Primero calculamos la altura total del contenido
-                const totalHeight = element.scrollHeight;
-                let position = 0;
-                let pageNum = 1;
-                
-                // Función para capturar una sección del CV
-                const captureSection = async (yPosition) => {
-                    return await html2canvas(element, {
-                        scale: 2, // Mejor calidad
-                        useCORS: true, // Para imágenes externas
-                        windowHeight: element.scrollHeight,
-                        scrollY: -window.scrollY,
-                        y: yPosition,
-                        height: pageHeight,
-                        logging: true,
-                        backgroundColor: '#FFFFFF'
-                    });
-                };
-                
-                // Capturamos el CV por secciones (páginas)
-                while (position < totalHeight) {
-                    if (pageNum > 1) {
-                        pdf.addPage();
-                    }
-                    
-                    const canvas = await captureSection(position);
-                    const imgData = canvas.toDataURL('image/png', 1.0);
-                    const imgWidth = pdf.internal.pageSize.getWidth() - (2 * padding);
-                    const imgHeight = (canvas.height * imgWidth) / canvas.width;
-                    
-                    pdf.addImage(imgData, 'PNG', padding, padding, imgWidth, imgHeight);
-                    position += pageHeight;
-                    pageNum++;
-                }
-                
-                // Guardar el PDF
-                pdf.save('CV_Cesar_Lesmo.pdf');
-                
-            } catch (error) {
-                console.error('Error al generar PDF:', error);
-                alert('Hubo un error al generar el PDF. Por favor inténtalo nuevamente.');
-            } finally {
-                btn.innerHTML = '<i class="fas fa-file-pdf me-2"></i>Descargar CV Completo en PDF';
-                btn.disabled = false;
-            }
-        });
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('downloadPdf');
+      btn.addEventListener('click', async () => {
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Generando PDF...';
+        btn.disabled = true;
+        const element = document.getElementById('cv');
+        const { jsPDF } = window.jspdf;
+
+        try {
+          const canvas = await html2canvas(element, {
+            scale: 2,
+            useCORS: true
+          });
+
+          const imgData = canvas.toDataURL('image/png');
+          const pdf = new jsPDF('p', 'mm', 'a4');
+          const imgProps = pdf.getImageProperties(imgData);
+          const pdfWidth = pdf.internal.pageSize.getWidth();
+          const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+          // Dividir el contenido si es más largo que una página
+          let heightLeft = pdfHeight;
+          let position = 0;
+
+          pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, pdfHeight);
+          heightLeft -= pdf.internal.pageSize.getHeight();
+
+          while (heightLeft > 0) {
+            position -= pdf.internal.pageSize.getHeight();
+            pdf.addPage();
+            pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, pdfHeight);
+            heightLeft -= pdf.internal.pageSize.getHeight();
+          }
+
+          pdf.save('CV_Cesar_Lesmo.pdf');
+        } catch (e) {
+          console.error('Error generando PDF:', e);
+          alert('Error al generar el PDF.');
+        } finally {
+          btn.innerHTML = '<i class="fas fa-file-pdf me-2"></i>Descargar CV Completo en PDF';
+          btn.disabled = false;
+        }
+      });
     });
-    </script>
+  </script>
 </body>
 </html>
